@@ -275,6 +275,36 @@ Figure 1. Engineering economics cash flow diagrams.
 <div id="applications" class="section level1">
 <h1>APPLICATIONS</h1>
 <p>Insert.</p>
+<div id="time-value-of-money" class="section level2">
+<h2>Time value of money</h2>
+<p>The time value of money is a widely accepted perception of the power of the dollar now having greater value than the same dollar later. That means the same money is worth different values at different times due to interest rates and inflation. The time value of money is one of the aspects measured when investing money. The main factors that affect the equivalence of money are the interest rates, the time that the cost occurs, and the amount of money (payments). Usually, in engineering projects, time value of money analysis is conducted as one piece of the decision-making process. The decision-making can be business related or technical. All of the functions provided in this R-package can be used to determine the time value of money based on different scenarios.</p>
+</div>
+<div id="life-cycle-cost-analysis" class="section level2">
+<h2>Life-cycle cost analysis</h2>
+<p>All engineering projects have a life cycle that includes planning, design, implementation, operation, maintenance, and disposal. All these costs occurring during the lifetime of a project are called life-cycle costs. Life-cycle cost of a project could be determined by combining a few functions from this package. annual.to.present can be used to bring the annual operation and regular maintenance costs of a project to present value and future.to.present to bring the occasional maintenance and disposal costs to present value, which do not occur regularly like the annual O&amp;M. Then, the sum of the two values will give us the project’s present value of cost. Or, if the maintenance costs are increasing annually, gradient.to.present can be used to calculate the present value of the costs.</p>
+<p><em>Example</em>:</p>
+<ol style="list-style-type: decimal">
+<li>Which of the two options is the better financial choice? Option A Option B Capital cost $50,000 $48,000 Annual O&amp;M cost $1500 $2000 Discount rate 2.5% 3% Lifetime 25 years 20 years</li>
+</ol>
+<p>Solution using the functions in the package: Option A Option B</p>
+<p>Pr.value = 50,000 + $48,000 + annual.to.present(0.025, 25, 1500) annual.to.present(0.025, 20, 1500)</p>
+<pre><code>            = 50,000 + 27,637                                          = 48,000 + 29,755
+        =  $77,637                                                      =  $78,255</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>The maintenance cost for a house is $800 the first year and increases by $200 per year after that. Assuming an interest rate of 4% compounded yearly. What is the equivalent annual maintenance cost over 15 years? Solution using the functions in the package: gradient.to.annual(i, n, G, A) – calculates the present value of the benefit</li>
+</ol>
+</div>
+<div id="return-of-return-ror" class="section level2">
+<h2>Return of Return (ROR)</h2>
+<p>When a cash flow represents a project’s costs and benefits, the rate of return can be used to identify the investment return. Usually, ROR compares several alternatives or reduces future costs by spending on other alternatives. The rate of return of an alternative action can be determined by calculating the present value of alternatives using the future.to.present function. ROR is the interest rate at which the present value of benefits equals the present value of costs.</p>
+<p>Pr.value of benefits = Pr.value of costs. <em>Example</em>: The investment for constructing a rain garden is 6,000. The estimated environmental and health benefit is 500 at the end of each year for the next 20 years. What is the ROR with a discount rate of 4%? Should we accept the construction of the rain garden? Solution using the functions in the package:</p>
+<p>annual.to.present (4,20,500) – calculates the present value of the benefit</p>
+<p>Since the pr.value of the benefit is higher than the investment cost (6,795 &gt; 6,000), we should accept the project.</p>
+</div>
+</div>
+<div id="summary" class="section level1">
+<h1>Summary</h1>
+<p>Insert conclusion paragraph.</p>
 </div>
 <div id="acknowledgements" class="section level1 unnumbered">
 <h1 class="unnumbered">Acknowledgements</h1>
