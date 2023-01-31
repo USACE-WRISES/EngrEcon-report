@@ -5,10 +5,7 @@ date: "February 2023"
 output:
   html_document: default
   word_document: default
-description: The U.S. Army Engineer Research and Development Center (ERDC) has developed
-  an R-package for conducting standard engineering economics methods and computing
-  life cycle cost analysis. This report documents the development of this tool, including
-  information on model scoping, the development process, and error-checking.
+description: The U.S. Army Engineer Research and Development Center (ERDC) has developed an R-package for conducting standard engineering economics methods and computing life cycle cost analysis. This report documents the development of this tool, including information on model scoping, the development process, and error-checking.
 github-repo: USACE-WRISES/LifeCycleCost-report
 ---
 
@@ -51,10 +48,17 @@ Insert.
 
 # INTRODUCTION
 
-Engineering economics evaluates the costs of services, products, and systems. In engineering projects, the physical and cost feasibilities must be considered. A project's cost-effectiveness or economic efficiency can be evaluated by performing a cost analysis. A cost analysis considers all of the costs, which are direct and indirect, related to the project. Direct costs include labor and material costs, and indirect costs include planning, design, and administrative costs. The overall project costs can be classified as (1) Initial cost, which is the capital cost of the project, (2) annual cost, which is the operation cost or any other costs that occur yearly; and (3) future cost, which includes maintenance or rehabilitation cost. These costs occur at different times of a project year. In order to pick the cost-efficient option from different project alternatives, converting the costs to the same time is essential. 
+In engineering projects, a project's financial cost feasibility must be considered in addition to the physical feasibility. Engineering economics is a specific area that applies economic analysis techniques in engineering projects. Engineering economics evaluates the costs of engineering projects' services, products, and systems; engineering design alternatives will be compared based on these cost analyses. Not only the costs but also evaluates the revenues and benefits that occur at different times of a project's life. 
 
-An R-package is developed to provide a convenient way of performing engineering cost analyses. Several sets of engineering cost analysis functions are included in the package. The functions can be used to convert single payments or equivalent payments to the equivalent cost.  
-To perform cost analyses understanding the cash flow is essential. The cash flow tells us the sum of money recorded as an expense or gain in a project's lifetime. The timing of cash flows over the project's life is a crucial factor of cost analysis. The functions included in this package were developed based on the basic engineering economic equations (Newnan et al., 2020).
+Engineering economic analysis evaluates a project's cost feasibility or economic effectiveness. The cost analysis considers all of the costs, which are direct and indirect, related to the project. Direct costs include labor and material costs, and indirect costs include planning, design, and administrative costs. The overall engineering project costs can be classified as (1) initial cost, which is the capital cost of the project, (2) annual cost, which is the operation cost or any other costs that occur yearly; and (3) future cost, which includes maintenance or rehabilitation cost. These costs occur at different times of a project year, and the combination of all the costs during the project's life is called life-cycle costs (WBDG, 2016). In order to pick the cost-efficient option from different project alternatives, converting the costs to the same time is essential. Almost all the time, engineering project costs occur during the design and building stages, and revenue or benefits occur after completion (David & Terry, 2012). 
+
+For instance, recently, nature-based solutions (NbS) actions are getting more interest than engineered solutions in the public and private sectors. NbS are getting the favor due to their benefits in protecting, managing, or restoring nature. The costs of implementing these practices must be fully understood in addition to their benefits, which will help to select the optimum design. In order to explain that these alternatives are better and help make the right decision (Choice), engineering economic analysis will play a critical role in quantifying the costs and benefits.  
+
+To perform cost analyses understanding the cash flow of the alternatives is essential. Cash flow tells us the sum of money recorded as an expense or gain in a project's life time. The timing of cash flows over the project's life is a crucial factor of cost analysis. Cash inflow or positive cash flow is money coming into a firm/agency, and cash outflow or negative cash flow is money paid out by a firm/agency. The net cash flow is the difference between total cash inflows and the total cash outflows for a specific period. This period is usually called a lifetime (design life) in engineering projects. The amount of money and the point at which it is received or paid is a crucial components of any economic analysis. 
+This R-package is developed to provide a convenient way of performing engineering economic analyses. Several sets of engineering cost analysis functions are included in the package. The functions convert single, uniform serious, and uniform gradient payments to the equivalent cost. The functions in this package were developed based on the basic engineering economic equations (David & Terry, 2012; Newnan et al., 2020). 
+
+Furthermore, engineering economics tools can also be applied to personal finances. Such as understanding the time value of money, investments, loans, savings, and taxes. 
+
 
 # METHODS
 
