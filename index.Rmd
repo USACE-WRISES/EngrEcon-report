@@ -229,7 +229,7 @@ Since the pr.value of the benefit is higher than the investment cost (6,795 > 6,
 
 # Summary
 
-Insert conclusion paragraph.
+Engineering economics is an essential aspect of engineering projects. The subject's typical applications include but are not limited to analyzing a possible investment, comparing alternatives, and determining bases for decision-making. Several options and equations exist to perform engineering economic analyses based on a project's scope and objective. The "engreco" R package was developed to provide these functions in one place on R studio. The package contains several functions required to perform engineering economic analyses. This package is a great addition to the R package pool that helps users to perform such analyses conveniently. 
 
 
 # Acknowledgements {-}
