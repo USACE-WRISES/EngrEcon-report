@@ -45,7 +45,7 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message = FALSE)
 
 In engineering projects analyzing economic decision-making problems is of the crucial components. Recently, several innovative alternative solutions have been developed for engineering projects in addition to traditional infrastructure. When there are many alternatives, the triple bottom line frame is commonly used to measure the sustainability of alternatives and select the best solution. The triple bottom line frame measures a project's or business's effectiveness in three areas. One of these areas is economic or profit analysis. For engineering projects, engineering economic analysis is performed to analyze the cost of alternatives. 
 
-An R package (engreco) was developed with several engineering economic analysis functions, also available via github. The main objective of the package is to add engineering economic analysis functions to the R-package development pool for convenient use for R users. Cash-flow diagrams are also included in the description document to show how each function calculates the time value of money. The package contains x functions with commonly used economic analysis equations; this package's possible use includes analyzing fixed and incremental costs, comparing alternatives, and cost estimation. The package is not only for engineering projects; anyone can use these basic functions to perform any economic analysis, including personal financing, such as investment and retirement plans. 
+An R package (engreco) was developed with several engineering economic analysis functions, also available via github. The main objective of the package is to add engineering economic analysis functions to the R-package development pool for convenient use for R users. Cash-flow diagrams are also included in the description document to show how each function calculates the time value of money. The package contains 11 functions with commonly used economic analysis equations; this package's possible use includes analyzing fixed and incremental costs, comparing alternatives, and cost estimation. The package is not only for engineering projects; anyone can use these basic functions to perform any economic analysis, including personal financing, such as investment and retirement plans. 
 
 
 
@@ -162,10 +162,13 @@ The present.to.future can be used to calculate the amount of money based on the 
 
 ## Interest During Construction
 
-`interest.during.construction`: determines interest during construction (IDC) based on the interest rate, duration, and capital investment. IDC is not a financial cost for which no one will be required to pay (Engineer & Resources, 1993). 
+`interest.during.construction`: determines interest during construction (IDC) based on the interest rate, duration, and capital investment. IDC is not a financial cost for which no one will be required to pay (Engineer & Resources, 1993). The calculation depends on the construction duration.
 
+$im =(1+i)^(1/12)-1$  
 
-<span style="color: red;">Add equations for IDC.</span>
+$ IDC= (Ccost/y*∑_(n=1)^(y-1)(1+im)^n-1$
+
+Where $im$ is monthly discount rate, $y$ is construction duration, and $Ccost$ = capital cost
 
 _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and the duration of construction is 24 months. What is the interest during construction for this project?
 
