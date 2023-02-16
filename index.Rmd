@@ -164,11 +164,11 @@ The present.to.future can be used to calculate the amount of money based on the 
 
 `interest.during.construction`: determines interest during construction (IDC) based on the interest rate, duration, and capital investment. IDC is not a financial cost for which no one will be required to pay (Engineer & Resources, 1993). The calculation depends on the construction duration.
 
-$im =(1+i)^(1/12)-1$  
+$i_{m} = (1+i)^{1/12}-1$  
 
-$ IDC= (Ccost/y*∑_(n=1)^(y-1)(1+im)^n-1$
+$IDC = \frac{C_{cost}}{y} * \sum_{n=1}^{y-1}(1+i_{m})^{n-1}$
 
-Where $im$ is monthly discount rate, $y$ is construction duration, and $Ccost$ = capital cost
+Where $i_{m}$ is monthly discount rate, $y$ is construction duration, and $C_{cost}$ = capital cost
 
 _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and the duration of construction is 24 months. What is the interest during construction for this project?
 
