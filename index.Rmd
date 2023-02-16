@@ -182,7 +182,7 @@ _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and 
 
 # APPLICATIONS
 
-Insert.
+A project needs a feasibility study before the actual implementation to explore and examine all aspects of a project. Feasibility studies include technical, legal, environmental, and economical. An economic feasibility study determines the cost-effectiveness of a project considering the related benefits and the costs. Engineering economics gives engineers ways to consider a project's financial aspects through different forms of analysis, such as life-cycle cost, equivalent annual cost, and rate of return. These analyses help to compare alternatives and make a sound decision – choose the least expensive and the most desirable.  
 
 ## Time value of money
 
