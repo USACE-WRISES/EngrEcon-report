@@ -38,7 +38,10 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message = FALSE)
 ##########
 #Load all necessary R packages
 #library(devtools)
+
+#Load our engrecon package
 #install_github("USACE-WRISES/LifeCycleCost-package") #Loads the R-package presented here
+#library(engrecon)
 ```
 
 # ABSTRACT
