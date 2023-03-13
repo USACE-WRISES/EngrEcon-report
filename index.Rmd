@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message = FALSE)
 #install_github("USACE-WRISES/LifeCycleCost-package") #Loads the R-package presented here
 ```
 
-# ABSTRACT
+# Abstract
 
 In engineering projects analyzing economic decision-making problems is of the crucial components. Recently, several innovative alternative solutions have been developed for engineering projects in addition to traditional infrastructure. When there are many alternatives, the triple bottom line frame is commonly used to measure the sustainability of alternatives and select the best solution. The triple bottom line frame measures a project's or business's effectiveness in three areas. One of these areas is economic or profit analysis. For engineering projects, engineering economic analysis is performed to analyze the cost of alternatives. 
 
@@ -49,7 +49,7 @@ An R package (engreco) was developed with several engineering economic analysis 
 
 
 
-# INTRODUCTION
+# Introduction
 
 In engineering projects, a project's financial cost feasibility must be considered in addition to the physical feasibility. Engineering economics is a specific area that applies economic analysis techniques in engineering projects. Engineering economics evaluates the costs of engineering projects' services, products, and systems; engineering design alternatives will be compared based on these cost analyses. Not only the costs but also evaluates the revenues and benefits that occur at different times of a project's life. 
 
@@ -63,7 +63,7 @@ This R-package is developed to provide a convenient way of performing engineerin
 Furthermore, engineering economics tools can also be applied to personal finances. Such as understanding the time value of money, investments, loans, savings, and taxes. 
 
 
-# METHODS
+# Methods
 
 Discount factors are used to compute the equivalent costs that occurred at different cash flow points. The R functions are developed for single, uniform series, and uniform gradient payments. List of symbols used in the R-package: 
 
@@ -180,7 +180,7 @@ _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and 
 ```
 
 
-# APPLICATIONS
+# Applications
 
 A project needs a feasibility study before the actual implementation to explore and examine all aspects of a project. Feasibility studies include technical, legal, environmental, and economical. An economic feasibility study determines the cost-effectiveness of a project considering the related benefits and the costs. Engineering economics gives engineers ways to consider a project's financial aspects through different forms of analysis, such as life-cycle cost, equivalent annual cost, and rate of return. These analyses help to compare alternatives and make a sound decision – choose the least expensive and the most desirable.  
 
