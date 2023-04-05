@@ -164,7 +164,6 @@ effective_interest_rate(0.06, m = "yearly")
 The present.to.future can be used to calculate the amount of money based on the calculated effective interest rate.
 
 ```{r echo=TRUE}
-#present.to.future(0.061, 1, 50000)
 present_to_future(0.06,1,50000)
 ```
 
@@ -182,10 +181,8 @@ Where $i_{m}$ is monthly discount rate, $y$ is construction duration, and $C_{co
 _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and the duration of construction is 24 months. What is the interest during construction for this project?
 
 
-`gradient.to.annual(i,duration,capital)` calculates the present value of the benefit. 
-
 ```{r echo=TRUE}
-#interest.during.construction(0.0275, 24, 800000)
+interest_during_construction(0.0275,24,800000)
 ```
 
 
@@ -204,36 +201,60 @@ All engineering projects have a life cycle that includes planning, design, imple
 _Example_: 
 
 1.	Which of the two options is the better financial choice?
-	Option A	Option B
-Capital cost	$50,000	$48,000
-Annual O&M cost 	$1500	$2000
-Discount rate	2.5%	3%
-Lifetime 	25 years	20 years
+
+Option 1	Option B
+Capital cost - $50,000	
+Annual O&M cost -	$1500	
+Discount rate -	2.5%	
+Lifetime -25 years	
+
+Option 2
+Capital cost - $48,000
+Annual O&M cost -	$2000
+Discount rate -	3%
+Lifetime -	20 years
 
 Solution using the functions in the package:
-Option A	Option B
 
-Pr.value =  50,000 +                                                        $48,000 +
-     annual.to.present(0.025, 25, 1500)                 annual.to.present(0.025, 20, 1500)
-                            
-            	= 50,000 + 27,637                                          = 48,000 + 29,755
-          	=  $77,637                                                      =  $78,255
+Option 1
+
+```{r echo=TRUE}
+C1 <- 50000
+PVOM1 <- annual_to_present(0.025,25,1500) 
+PV1 <- C1+PVOM1
+PV1
+```
+Option 2
+
+```{r echo=TRUE}
+C2 <- 48000
+PVOM2 <- annual_to_present(0.03,20,2000) 
+PV2 <- C2+PVOM2
+PV2
+```
+
 2.	The maintenance cost for a house is $800 the first year and increases by $200 per year after that. Assuming an interest rate of 4% compounded yearly. What is the equivalent annual maintenance cost over 15 years? 
+
 Solution using the functions in the package:
-gradient.to.annual(i, n, G, A) – calculates the present value of the benefit
-         
+```{r echo=TRUE}
+GAE <- gradient_to_annual(0.04,15,200,800)
+GAE
+```
 
 ## Return of Return (ROR)
 
 When a cash flow represents a project's costs and benefits, the rate of return can be used to identify the investment return. Usually, ROR compares several alternatives or reduces future costs by spending on other alternatives. The rate of return of an alternative action can be determined by calculating the present value of alternatives using the future.to.present function. ROR is the interest rate at which the present value of benefits equals the present value of costs. 
 
 Pr.value of benefits = Pr.value of costs. 
-_Example_: The investment for constructing a rain garden is 6,000. The estimated environmental and health benefit is 500 at the end of each year for the next 20 years. What is the ROR with a discount rate of  4%? Should we accept the construction of the rain garden? 
-Solution using the functions in the package:
 
-annual.to.present (4,20,500) – calculates the present value of the benefit
- 
-Since the pr.value of the benefit is higher than the investment cost (6,795 > 6,000), we should accept the project. 
+_Example_: The investment for constructing a rain garden is 6,000. The estimated environmental and health benefit is 500 at the end of each year for the next 20 years. What is the ROR with a discount rate of  4%? Should we accept the construction of the rain garden? 
+
+Solution using the functions in the package:
+```{r echo=TRUE}
+PVB <- annual_to_present(0.04,20,500)# calculates the present value of the benefit
+PVB
+```
+ Since the pr.value of the benefit is higher than the investment cost (6,795 > 6,000), we should accept the project. 
 
 
 # Summary
