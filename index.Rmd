@@ -182,7 +182,8 @@ _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and 
 
 
 ```{r echo=TRUE}
-interest_during_construction(0.0275,24,800000)
+IDC <- interest_during_construction(0.0275,24,800000)
+IDC
 ```
 
 
