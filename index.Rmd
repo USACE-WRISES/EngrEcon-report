@@ -1,7 +1,7 @@
 --- 
 title: "EngrEcon R-package"
 author: "Liya Abera and S. Kyle McKay"
-date: "February 2023"
+date: "April 2023"
 output:
   html_document: default
   word_document: default
@@ -155,16 +155,17 @@ Where $i_e$ is effective annual interest rate, $i$ is effective interest rate pe
 
 _Example_: An investment was made at $50,000 with a 6% interest rate compounded quarterly. How much is the effective annual interest? How much money would be in the account at the end of the first year?
 
-The function effective_i can be used to calculate the effective annual interest:
+The function effective_interest_rate can be used to calculate the effective annual interest:
 
 ```{r echo=TRUE}
-#effective_i(0.06, m = "yearly")
+effective_interest_rate(0.06, m = "yearly")
 ```
 
 The present.to.future can be used to calculate the amount of money based on the calculated effective interest rate.
 
 ```{r echo=TRUE}
 #present.to.future(0.061, 1, 50000)
+present_to_future(0.06,1,50000)
 ```
 
 
