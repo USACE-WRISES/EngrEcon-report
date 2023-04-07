@@ -91,33 +91,33 @@ knitr::include_graphics("ZZ_EngrEconCashFlow.png")
 
 ## Single Payment Functions
 
-`present.to.future`: This function computes the equivalent future value (fr.value) of any present value (pv.value) at a point of a cash flow. 
+`present_to_future`: This function computes the equivalent future value (fr.value) of any present value (pv.value) at a point of a cash flow. 
 
 $F = P(1+i)^n$
 
-`future.to.present`: This function combine future single payment or cost to present value. 
+`future_to_present`: This function combine future single payment or cost to present value. 
 
 $P = \frac{F}{(1+i)^n}$
 
 
 ## Uniform Series Payment
 
-`annual.to.future`: determines the future value from the annual equivalent payment series or income that start at the end of the first year and continue for the life span of a project. The cash flow repeats at the end of each year without changing the amount. 
+`annual_to_future`: determines the future value from the annual equivalent payment series or income that start at the end of the first year and continue for the life span of a project. The cash flow repeats at the end of each year without changing the amount. 
 
 $F = A \frac{(1+i)^n-1}{i}$
 
 
-`annual.to.present`: determines the present value or cost from a series of annual values/costs that starts at the end of the first year and continues for the life span of a project. 
+`annual_to_present`: determines the present value or cost from a series of annual values/costs that starts at the end of the first year and continues for the life span of a project. 
 
 $F = A \frac{(1+i)^n-1}{i(1+i)^n}$
 
 
-`future.to.annual`: determines the future value after n periods of an annuity. 
+`future_to_annual`: determines the future value after n periods of an annuity. 
 
 $A = F \frac{i}{(1+i)^n-1}$
 
 
-`present.to.annual`: a comparison of alternatives based on their present value is misleading when the lifespan of the alternative value is different. The capital recovery factor converts each alternative's present value to an equivalent annual. The present.to.annual function can be used to make this conversion and comparison. 
+`present_to_annual`: a comparison of alternatives based on their present value is misleading when the lifespan of the alternative value is different. The capital recovery factor converts each alternative's present value to an equivalent annual. The present.to.annual function can be used to make this conversion and comparison. 
 
 $A = P \frac{i(1+i)^n}{(1+i)^n-1}$
 
@@ -126,17 +126,17 @@ $A = P \frac{i(1+i)^n}{(1+i)^n-1}$
 
 Gradient payment is a payment that either increases or decreases by a constant amount. The cash flow changes in each period by the same amount, called gradient (_G_).
 
-`gradient.to.present`: calculates the present worth of a cash flow increasing or decreasing by a uniform amount. 
+`gradient_to_present`: calculates the present worth of a cash flow increasing or decreasing by a uniform amount. 
 
 $P = G (\frac{(1+i)^n-1}{i^2(1+i)^n} - \frac{n}{i(1+i)^n})$
 
 
-`gradient.to.future`: calculates the future worth of a cash flow increasing or decreasing by a uniform amount. 
+`gradient_to_future`: calculates the future worth of a cash flow increasing or decreasing by a uniform amount. 
 
 $F = G (\frac{(1+i)^n-1}{i^2} - \frac{n}{i})$
 
 
-`gradient.to.annual`: calculates the future worth of a cash flow that is increasing or decreasing by a uniform amount. 
+`gradient_to_annual`: calculates the future worth of a cash flow that is increasing or decreasing by a uniform amount. 
 
 $A = G (\frac{1}{i} - \frac{n}{(1+i)^n-1})$
 
@@ -161,16 +161,19 @@ The function effective_interest_rate can be used to calculate the effective annu
 effective_interest_rate(0.06, m = "yearly")
 ```
 
-The present.to.future can be used to calculate the amount of money based on the calculated effective interest rate.
+The present_to_future can be used to calculate the amount of money based on the calculated effective interest rate.
 
 ```{r echo=TRUE}
 present_to_future(0.06,1,50000)
 ```
-
+Example with not code showing
+```{r}
+present_to_future(0.06,1,50000)
+```
 
 ## Interest During Construction
 
-`interest.during.construction`: determines interest during construction (IDC) based on the interest rate, duration, and capital investment. IDC is not a financial cost for which no one will be required to pay (Engineer & Resources, 1993). The calculation depends on the construction duration.
+`interest_during_construction`: determines interest during construction (IDC) based on the interest rate, duration, and capital investment. IDC is not a financial cost for which no one will be required to pay (Engineer & Resources, 1993). The calculation depends on the construction duration.
 
 $i_{m} = (1+i)^{1/12}-1$  
 
@@ -203,7 +206,7 @@ _Example_:
 
 1.	Which of the two options is the better financial choice?
 
-Option 1	Option B
+Option 1	
 Capital cost - $50,000	
 Annual O&M cost -	$1500	
 Discount rate -	2.5%	
