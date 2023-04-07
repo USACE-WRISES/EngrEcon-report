@@ -95,10 +95,29 @@ knitr::include_graphics("ZZ_EngrEconCashFlow.png")
 
 $F = P(1+i)^n$
 
+Example use 
+```{r echo=TRUE}
+# For
+  # i= 2.75%
+  # n = 30 years
+  # PV = 800,000
+present_to_future(0.0275,30,800000)
+# it returns fr.value = 1805281
+```
+
 `future_to_present`: This function combine future single payment or cost to present value. 
 
 $P = \frac{F}{(1+i)^n}$
 
+Example use
+```{r echo=TRUE}
+# For
+  # i= 2.75%
+  # n = 30 years
+  # FV = 800,000
+future_to_present(0.0275,30,800000)
+# it returns pr.value = 35451
+```
 
 ## Uniform Series Payment
 
@@ -106,21 +125,56 @@ $P = \frac{F}{(1+i)^n}$
 
 $F = A \frac{(1+i)^n-1}{i}$
 
-
+Example use
+```{r echo=TRUE}
+# For
+# i = 0.0275
+# n = 30
+# A = 30000
+annual_to_future(0.0275,30,30000)
+# it returns future value = 1370838
+```
 `annual_to_present`: determines the present value or cost from a series of annual values/costs that starts at the end of the first year and continues for the life span of a project. 
 
 $F = A \frac{(1+i)^n-1}{i(1+i)^n}$
 
+Example use
+```{r echo=TRUE}
+# For
+# i = 0.0275
+# n = 30
+# A = 30000
+annual_to_present(0.0275,30,30000)
+# it returns present value= 607479
+```
 
 `future_to_annual`: determines the future value after n periods of an annuity. 
 
 $A = F \frac{i}{(1+i)^n-1}$
 
+Example use
+```{r echo=TRUE}
+# For
+ # i = 0.0275
+ # n = 30
+ # FV = 800000
+future_to_annual(0.0275,30,100000)
+# it returns annual value = 2188.442
+```
 
 `present_to_annual`: a comparison of alternatives based on their present value is misleading when the lifespan of the alternative value is different. The capital recovery factor converts each alternative's present value to an equivalent annual. The present.to.annual function can be used to make this conversion and comparison. 
 
 $A = P \frac{i(1+i)^n}{(1+i)^n-1}$
 
+Example use
+```{r echo=TRUE}
+# For
+ # i = 0.0275
+ # n = 30
+ # FV = 100000
+present_to_annual(0.0275,30,100000)
+# it returns annual value = 4938.44
+```
 
 ## Uniform Gradient Payment
 
@@ -130,17 +184,44 @@ Gradient payment is a payment that either increases or decreases by a constant a
 
 $P = G (\frac{(1+i)^n-1}{i^2(1+i)^n} - \frac{n}{i(1+i)^n})$
 
+Example use
+```{r echo=TRUE}
+# For
+ # i = 0.0275
+ # n = 30
+ # G = 2000
+gradient_to_present(0.0275,30,2000)
+# it returns present value = 505816.4
+```
 
 `gradient_to_future`: calculates the future worth of a cash flow increasing or decreasing by a uniform amount. 
 
 $F = G (\frac{(1+i)^n-1}{i^2} - \frac{n}{i})$
 
+Example use
+```{r echo=TRUE}
+# For
+ # i = 0.0275
+ # n = 30
+ # G = 2000
+gradient_to_future(0.0275,30,2000)
+# it returns future value = 1141426 
+```
 
 `gradient_to_annual`: calculates the future worth of a cash flow that is increasing or decreasing by a uniform amount. 
 
 $A = G (\frac{1}{i} - \frac{n}{(1+i)^n-1})$
 
-
+Example use
+```{r echo=TRUE}
+# For
+ # i = 0.0275
+ # n = 30
+ # G = 2000
+ # A = 40000
+gradient_to_annual(0.0275,30,2000, 40000)
+# it returns annual value = 64979.45
+```
 When working in gradient cash flow, one important point that needs consideration is defining the sign (- or +) for cash flow. For instance: if we define the expense as positive and the revenue as negative when the gradient is increasing, the sign is positive, and if the gradient is decreasing, the sign is negative.
 
 
@@ -153,24 +234,30 @@ $i_e = (1 + \frac{r}{m})^m - 1 = (1+i)^m - 1$
 
 Where $i_e$ is effective annual interest rate, $i$ is effective interest rate per compound period $(r/m)$, $m$ is number of compounding period per year, and $r$ is nominal interest rate per year.
 
-_Example_: An investment was made at $50,000 with a 6% interest rate compounded quarterly. How much is the effective annual interest? How much money would be in the account at the end of the first year?
+_Example_: An investment was made at $50,000 with a 6% interest rate compounded quarterly.
+           (a) How much is the effective annual interest? 
+           (b) How much money would be in the account at the end of the first year?
 
 The function effective_interest_rate can be used to calculate the effective annual interest:
 
 ```{r echo=TRUE}
-effective_interest_rate(0.06, m = "yearly")
+# (a)
+# For
+ # r = 6% =0.06
+ # m = yearly
+ # 
+effective_interest_rate(0.06, m= "quarterly")
+# it returns effective interest rate = 6.14 %
 ```
-
 The present_to_future can be used to calculate the amount of money based on the calculated effective interest rate.
 
 ```{r echo=TRUE}
-present_to_future(0.06,1,50000)
+ #(b)
+# n = 1
+# PV = 50000
+present_to_future(0.0614,1,50000)
+# The amount of money at the end of the year = 53070
 ```
-Example with not code showing
-```{r}
-present_to_future(0.06,1,50000)
-```
-
 ## Interest During Construction
 
 `interest_during_construction`: determines interest during construction (IDC) based on the interest rate, duration, and capital investment. IDC is not a financial cost for which no one will be required to pay (Engineer & Resources, 1993). The calculation depends on the construction duration.
@@ -185,10 +272,12 @@ _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and 
 
 
 ```{r echo=TRUE}
-IDC <- interest_during_construction(0.0275,24,800000)
-IDC
+# i = 0.027 = 2.75%
+# duration = 24 months
+# capital 0 800000
+interest_during_construction(0.0275, 24, 800000)
+# IDC =21171.91
 ```
-
 
 # Applications
 
@@ -241,8 +330,12 @@ PV2
 
 Solution using the functions in the package:
 ```{r echo=TRUE}
-GAE <- gradient_to_annual(0.04,15,200,800)
-GAE
+# i = 0.04 = 4%
+# n = 15 years
+# G =  200
+# A = 800
+gradient_to_annual(0.04,15,200,800)
+# returns equivalent annual interest = 2054.42
 ```
 
 ## Return of Return (ROR)
@@ -255,8 +348,8 @@ _Example_: The investment for constructing a rain garden is 6,000. The estimated
 
 Solution using the functions in the package:
 ```{r echo=TRUE}
-PVB <- annual_to_present(0.04,20,500)# calculates the present value of the benefit
-PVB
+annual_to_present(0.04,20,500)# calculates the present value of the benefit
+# it returns present value of benefit = 6795
 ```
  Since the pr.value of the benefit is higher than the investment cost (6,795 > 6,000), we should accept the project. 
 
