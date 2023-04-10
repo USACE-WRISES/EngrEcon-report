@@ -95,28 +95,22 @@ knitr::include_graphics("ZZ_EngrEconCashFlow.png")
 
 $F = P(1+i)^n$
 
-Example use 
+*Example*: Compute the future value of a present investment of $800,000 over 30 years with an interest rate of 2.75%.
+
 ```{r echo=TRUE}
-# For
-  # i= 2.75%
-  # n = 30 years
-  # PV = 800,000
+#present_to_future(i, n, PV)
 present_to_future(0.0275,30,800000)
-# it returns fr.value = 1805281
 ```
 
 `future_to_present`: This function combine future single payment or cost to present value. 
 
 $P = \frac{F}{(1+i)^n}$
 
-Example use
+*Example*: Compute the present investment need to obtain a future value of $1,805281 over 30 years with an interest rate of 2.75%.
+
 ```{r echo=TRUE}
-# For
-  # i= 2.75%
-  # n = 30 years
-  # FV = 800,000
-future_to_present(0.0275,30,800000)
-# it returns pr.value = 35451
+#future_to_present(i, n, FV)
+future_to_present(0.0275,30,1805281)
 ```
 
 ## Uniform Series Payment
@@ -275,7 +269,7 @@ _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and 
 # i = 0.027 = 2.75%
 # duration = 24 months
 # capital 0 800000
-interest_during_construction(0.0275, 24, 800000)
+#interest_during_construction(0.0275, 24, 800000)
 # IDC =21171.91
 ```
 
