@@ -66,10 +66,9 @@ Engineering economic analysis evaluates a project's cost feasibility or economic
 For instance, recently, nature-based solutions (NbS) actions are getting more interest than engineered solutions in the public and private sectors. NbS are getting the favor due to their benefits in protecting, managing, or restoring nature. The costs of implementing these practices must be fully understood in addition to their benefits, which will help to select the optimum design. In order to explain that these alternatives are better and help make the right decision (Choice), engineering economic analysis will play a critical role in quantifying the costs and benefits.  
 
 To perform cost analyses understanding the cash flow of the alternatives is essential. Cash flow tells us the sum of money recorded as an expense or gain in a project's life time. The timing of cash flows over the project's life is a crucial factor of cost analysis. Cash inflow or positive cash flow is money coming into a firm/agency, and cash outflow or negative cash flow is money paid out by a firm/agency. The net cash flow is the difference between total cash inflows and the total cash outflows for a specific period. This period is usually called a lifetime (design life) in engineering projects. The amount of money and the point at which it is received or paid is a crucial components of any economic analysis. 
-This R-package is developed to provide a convenient way of performing engineering economic analyses. Several sets of engineering cost analysis functions are included in the package. The functions convert single, uniform serious, and uniform gradient payments to the equivalent cost. The functions in this package were developed based on the basic engineering economic equations (David & Terry, 2012; Newnan et al., 2020). 
+This R-package is developed to provide a convenient way of performing engineering economic analyses. Several sets of engineering cost analysis functions are included in the package. The functions convert single, uniform serious, and uniform gradient payments to the equivalent cost. The functions in this package were developed based on the basic engineering economic equations (David & Terry, 2012; Newnan et al., 2020). Problem examples are included for Newnan(2020)book for each function to show how to use them. 
 
 Furthermore, engineering economics tools can also be applied to personal finances. Such as understanding the time value of money, investments, loans, savings, and taxes. 
-
 
 # Methods
 
@@ -88,29 +87,28 @@ Discount factors are used to compute the equivalent costs that occurred at diffe
 knitr::include_graphics("ZZ_EngrEconCashFlow.png")
 ```
 
-
 ## Single Payment Functions
 
 `present_to_future`: This function computes the equivalent future value (fr.value) of any present value (pv.value) at a point of a cash flow. 
 
 $F = P(1+i)^n$
 
-*Example*: Compute the future value of a present investment of $800,000 over 30 years with an interest rate of 2.75%.
-
+*Example*: If $500 were deposited in a bank savings account, how much would be in the account 3 years from now if the bank paid 6% interest compounded annually? (Newnan (2020), Example 3.5)
 ```{r echo=TRUE}
 #present_to_future(i, n, PV)
-present_to_future(0.0275,30,800000)
+present_to_future(0.06,3,500)
 ```
 
 `future_to_present`: This function combine future single payment or cost to present value. 
 
 $P = \frac{F}{(1+i)^n}$
 
-*Example*: Compute the present investment need to obtain a future value of $1,805281 over 30 years with an interest rate of 2.75%.
-
+*Example*: If you wish to have $800 in a savings account at the end of 4 years, and 5%
+interest will be paid annually, how much should you put into the savings
+account now? (Newnan (2020), Example 3.6)
 ```{r echo=TRUE}
 #future_to_present(i, n, FV)
-future_to_present(0.0275,30,1805281)
+future_to_present(0.05, 4, 800)
 ```
 
 ## Uniform Series Payment
@@ -119,55 +117,51 @@ future_to_present(0.0275,30,1805281)
 
 $F = A \frac{(1+i)^n-1}{i}$
 
-Example use
+*Example*: You deposit $500 in a credit union at the end of each year for 5 years. The
+credit union pays 5% interest, compounded annually. Immediately after the
+fifth deposit, how much can you withdraw from your account? (Newnan (2020), Example 4.1)
 ```{r echo=TRUE}
-# For
-# i = 0.0275
-# n = 30
-# A = 30000
-annual_to_future(0.0275,30,30000)
-# it returns future value = 1370838
+#annual.to.future(i, n, A)
+annual_to_future(0.05,5,500)
 ```
+
 `annual_to_present`: determines the present value or cost from a series of annual values/costs that starts at the end of the first year and continues for the life span of a project. 
 
 $F = A \frac{(1+i)^n-1}{i(1+i)^n}$
 
-Example use
+*Example*: A machine will cost $30,000 to purchase. Annual operating and maintenance
+costs (O&M) will be $2000. The machine will save $10,000 per year in labor
+costs.Calculate the machine’s present worth for an interest rate of 10%. (Newnan (2020), Example 4.5)
 ```{r echo=TRUE}
-# For
-# i = 0.0275
-# n = 30
-# A = 30000
-annual_to_present(0.0275,30,30000)
-# it returns present value= 607479
+# annual_to_present (i, n, A)
+(annual_to_present(0.1, 1, 10000)- annual_to_present(0.1, 1, 2000))-30000 
 ```
 
 `future_to_annual`: determines the future value after n periods of an annuity. 
 
 $A = F \frac{i}{(1+i)^n-1}$
 
-Example use
+*Example*: Jim Hayes wants to buy some electronic equipment for $1000. Jim has
+decided to save a uniform amount at the end of each month so that he will
+have the required $1000 at the end of one year. The local credit union pays
+6% interest, compounded monthly. How much does Jim have to deposit each
+month?(Newnan (2020), Example 4.3)
+
 ```{r echo=TRUE}
-# For
- # i = 0.0275
- # n = 30
- # FV = 800000
-future_to_annual(0.0275,30,100000)
-# it returns annual value = 2188.442
+#future_to_annual (i, n, F)
+future_to_annual(0.005,12,1000)
 ```
 
 `present_to_annual`: a comparison of alternatives based on their present value is misleading when the lifespan of the alternative value is different. The capital recovery factor converts each alternative's present value to an equivalent annual. The present.to.annual function can be used to make this conversion and comparison. 
 
 $A = P \frac{i(1+i)^n}{(1+i)^n-1}$
 
-Example use
+*Example*: An energy-efficient machine costs $5000 and has a life of 5 years. If the
+interest rate is 8%, how much must be saved every year to recover the cost of
+the capital invested in it? (Newnan (2020), Example 4.1)
 ```{r echo=TRUE}
-# For
- # i = 0.0275
- # n = 30
- # FV = 100000
-present_to_annual(0.0275,30,100000)
-# it returns annual value = 4938.44
+# present_to_annual (i, n, p)
+present_to_annual(0.08,5,5000)
 ```
 
 ## Uniform Gradient Payment
