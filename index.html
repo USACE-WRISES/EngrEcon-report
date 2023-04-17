@@ -569,39 +569,40 @@ amount, called gradient (<em>G</em>).</p>
 cash flow increasing or decreasing by a uniform amount.</p>
 <p><span class="math inline">\(P = G (\frac{(1+i)^n-1}{i^2(1+i)^n} -
 \frac{n}{i(1+i)^n})\)</span></p>
-<p>Example use</p>
-<pre class="r"><code># For
- # i = 0.0275
- # n = 30
- # G = 2000
-gradient_to_present(0.0275,30,2000)</code></pre>
-<pre><code>## [1] 505816.4</code></pre>
-<pre class="r"><code># it returns present value = 505816.4</code></pre>
+<p><em>Example</em>:calculate the present worth of a maintenance
+expected to be $2000 the first year and to increase $600 per year after
+that for 15 years with an annual interest rate of 4%.</p>
+<pre class="r"><code># gradient_to_present (i, n, G)
+gradient_to_present(0.04,15,600)</code></pre>
+<pre><code>## [1] 41841.3</code></pre>
+<pre class="r"><code># annual_to_present (i, n, A)
+gradient_to_present(0.04,15,2000)</code></pre>
+<pre><code>## [1] 139471</code></pre>
 <p><code>gradient_to_future</code>: calculates the future worth of a
 cash flow increasing or decreasing by a uniform amount.</p>
 <p><span class="math inline">\(F = G (\frac{(1+i)^n-1}{i^2} -
 \frac{n}{i})\)</span></p>
-<p>Example use</p>
-<pre class="r"><code># For
- # i = 0.0275
- # n = 30
- # G = 2000
-gradient_to_future(0.0275,30,2000)</code></pre>
-<pre><code>## [1] 1141426</code></pre>
-<pre class="r"><code># it returns future value = 1141426 </code></pre>
+<p><em>Example</em>:calculate the future worth of a cash flow that
+starts with $1000 at the end of the first year and to increase $200 per
+year after that for 6 years with an annual interest rate of 10%.
+((Whitman &amp; Terry, 2012), Example 2.9)</p>
+<pre class="r"><code>#gradient_to_future (i, n, G)
+gradient_to_future(0.10,6,200)</code></pre>
+<pre><code>## [1] 3431.22</code></pre>
+<pre class="r"><code>#Annual_to_future (i, n, A)
+annual_to_future(0.10,6,1000)</code></pre>
+<pre><code>## [1] 7715.61</code></pre>
 <p><code>gradient_to_annual</code>: calculates the future worth of a
 cash flow that is increasing or decreasing by a uniform amount.</p>
 <p><span class="math inline">\(A = G (\frac{1}{i} -
 \frac{n}{(1+i)^n-1})\)</span></p>
-<p>Example use</p>
-<pre class="r"><code># For
- # i = 0.0275
- # n = 30
- # G = 2000
- # A = 40000
-gradient_to_annual(0.0275,30,2000, 40000)</code></pre>
-<pre><code>## [1] 64979.45</code></pre>
-<pre class="r"><code># it returns annual value = 64979.45</code></pre>
+<p><em>Example</em>: The maintenance cost on a house is expected to be
+$1000 the first year and to increase $500 per year after that. Assuming
+an interest rate of 6% compounded annually. What is the maintenance cost
+over 10 years most nearly equivalent to an annual maintenance cost?</p>
+<pre class="r"><code># gradient_to_annual (i, n, G)
+gradient_to_annual(0.06,10,500,1000)</code></pre>
+<pre><code>## [1] 3011.003</code></pre>
 <p>When working in gradient cash flow, one important point that needs
 consideration is defining the sign (- or +) for cash flow. For instance:
 if we define the expense as positive and the revenue as negative when
@@ -626,21 +627,15 @@ interest? (b) How much money would be in the account at the end of the
 first year?</p>
 <p>The function effective_interest_rate can be used to calculate the
 effective annual interest:</p>
-<pre class="r"><code># (a)
-# For
- # r = 6% =0.06
- # m = yearly
- # 
-effective_interest_rate(0.06, m= &quot;quarterly&quot;)
-# it returns effective interest rate = 6.14 %</code></pre>
+<pre class="r"><code># (a)calculate interest rate
+# effective_interest_rate (i,m)
+effective_interest_rate(0.06, m= &quot;quarterly&quot;)</code></pre>
 <p>The present_to_future can be used to calculate the amount of money
 based on the calculated effective interest rate.</p>
-<pre class="r"><code> #(b)
-# n = 1
-# PV = 50000
+<pre class="r"><code>#(b)the money after the first year
+#present_to_future (i,n,p)
 present_to_future(0.0614,1,50000)</code></pre>
 <pre><code>## [1] 53070</code></pre>
-<pre class="r"><code># The amount of money at the end of the year = 53070</code></pre>
 </div>
 <div id="interest-during-construction" class="section level2">
 <h2>Interest During Construction</h2>
@@ -658,11 +653,8 @@ and <span class="math inline">\(C_{cost}\)</span> = capital cost</p>
 <p><em>Example</em>: A project’s first cost is $ 800,000, the interest
 rate is 2.75%, and the duration of construction is 24 months. What is
 the interest during construction for this project?</p>
-<pre class="r"><code># i = 0.027 = 2.75%
-# duration = 24 months
-# capital 0 800000
-#interest_during_construction(0.0275, 24, 800000)
-# IDC =21171.91</code></pre>
+<pre class="r"><code>#interest_during_construction(i, duration, capital)
+#interest_during_construction(0.0275, 24,800000)</code></pre>
 </div>
 </div>
 <div id="applications" class="section level1">
@@ -705,10 +697,8 @@ the annual O&amp;M. Then, the sum of the two values will give us the
 project’s present value of cost. Or, if the maintenance costs are
 increasing annually, gradient.to.present can be used to calculate the
 present value of the costs.</p>
-<p><em>Example</em>:</p>
-<ol style="list-style-type: decimal">
-<li>Which of the two options is the better financial choice?</li>
-</ol>
+<p><em>Example 1</em>: Which of the two options is the better financial
+choice?</p>
 <p>Option 1<br />
 Capital cost - $50,000<br />
 Annual O&amp;M cost - $1500<br />
@@ -716,33 +706,30 @@ Discount rate - 2.5%<br />
 Lifetime -25 years</p>
 <p>Option 2 Capital cost - $48,000 Annual O&amp;M cost - $2000 Discount
 rate - 3% Lifetime - 20 years</p>
-<p>Solution using the functions in the package:</p>
+<p><em>Solution</em>: Solution using the functions in the package:</p>
 <p>Option 1</p>
 <pre class="r"><code>C1 &lt;- 50000
+#annual_to_present (i, n, A)
 PVOM1 &lt;- annual_to_present(0.025,25,1500) 
 PV1 &lt;- C1+PVOM1
 PV1</code></pre>
 <pre><code>## [1] 77636.56</code></pre>
 <p>Option 2</p>
 <pre class="r"><code>C2 &lt;- 48000
+#annual_to_present (i, n, A)
 PVOM2 &lt;- annual_to_present(0.03,20,2000) 
 PV2 &lt;- C2+PVOM2
 PV2</code></pre>
 <pre><code>## [1] 77754.95</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>The maintenance cost for a house is $800 the first year and
-increases by $200 per year after that. Assuming an interest rate of 4%
-compounded yearly. What is the equivalent annual maintenance cost over
-15 years?</li>
-</ol>
-<p>Solution using the functions in the package:</p>
-<pre class="r"><code># i = 0.04 = 4%
-# n = 15 years
-# G =  200
-# A = 800
+<p>The better financial choice is Option 1 with less PV ($77,636 &lt;
+$77,755)</p>
+<p><em>Example 2</em>:The maintenance cost for a house is $800 the first
+year and increases by $200 per year after that. Assuming an interest
+rate of 4% compounded yearly. What is the equivalent annual maintenance
+cost over 15 years?</p>
+<pre class="r"><code># gradient_to_annual (i, n, G, A)
 gradient_to_annual(0.04,15,200,800)</code></pre>
 <pre><code>## [1] 2054.417</code></pre>
-<pre class="r"><code># returns equivalent annual interest = 2054.42</code></pre>
 </div>
 <div id="return-of-return-ror" class="section level2">
 <h2>Return of Return (ROR)</h2>
@@ -759,9 +746,9 @@ present value of benefits equals the present value of costs.</p>
 of each year for the next 20 years. What is the ROR with a discount rate
 of 4%? Should we accept the construction of the rain garden?</p>
 <p>Solution using the functions in the package:</p>
-<pre class="r"><code>annual_to_present(0.04,20,500)# calculates the present value of the benefit</code></pre>
+<pre class="r"><code># annual_to_present (i, n , A)
+annual_to_present(0.04,20,500)</code></pre>
 <pre><code>## [1] 6795.163</code></pre>
-<pre class="r"><code># it returns present value of benefit = 6795</code></pre>
 <p>Since the pr.value of the benefit is higher than the investment cost
 (6,795 &gt; 6,000), we should accept the project.</p>
 </div>
@@ -797,6 +784,9 @@ DACWC72-90(June).</p>
 <p>Newnan, D. G., Eschenbach, T. G., Lavelle, J. P., &amp; Oxford, N. Y.
 (2020). Engineering Economic Analysis (14th ed.). New York, Oxford
 University Press.</p>
+<p>Whitman, D. L., &amp; Terry, R. E. (2012). Fundamentals of
+engineering economics and decision analysis. In Synthesis Lectures on
+Engineering (Vol. 18). <a href="https://doi.org/10.2200/S00410ED1V01Y201203ENG018" class="uri">https://doi.org/10.2200/S00410ED1V01Y201203ENG018</a></p>
 </div>
 <div id="glossary-and-acronymns" class="section level1 unnumbered">
 <h1 class="unnumbered">Glossary and Acronymns</h1>
