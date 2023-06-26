@@ -43,10 +43,10 @@ library(devtools)
 install_github("USACE-WRISES/LifeCycleCost-package")
 
 #Loads the most recent version of the package
-library(lcca)
+library(EngrEcon)
 
 #This is eventually the line to load the package once it is on the CRAN site
-#library(engrecon)
+#library(EngrEcon)
 ```
 
 # Abstract
