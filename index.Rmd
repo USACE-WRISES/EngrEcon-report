@@ -6,7 +6,7 @@ output:
   html_document: default
   word_document: default
 description: The U.S. Army Engineer Research and Development Center (ERDC) has developed an R-package for conducting standard engineering economics methods and computing life cycle cost analysis. This report documents the development of this tool, including information on model scoping, the development process, and error-checking.
-github-repo: USACE-WRISES/LifeCycleCost-report
+github-repo: USACE-WRISES/EngrEcon-report
 ---
 
 # Front Matter {-}
