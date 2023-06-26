@@ -6,7 +6,7 @@ output:
   html_document: default
   word_document: default
 description: The U.S. Army Engineer Research and Development Center (ERDC) has developed an R-package for conducting standard engineering economics methods and computing life cycle cost analysis. This report documents the development of this tool, including information on model scoping, the development process, and error-checking.
-github-repo: USACE-WRISES/LifeCycleCost-report
+github-repo: USACE-WRISES/EngrEcon-report
 ---
 
 # Front Matter {-}
@@ -40,20 +40,20 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message = FALSE)
 library(devtools)
 
 #Downloads the package and stores locally
-install_github("USACE-WRISES/LifeCycleCost-package")
+install_github("USACE-WRISES/EngrEcon-package")
 
 #Loads the most recent version of the package
-library(lcca)
+library(EngrEcon)
 
 #This is eventually the line to load the package once it is on the CRAN site
-#library(engrecon)
+#library(EngrEcon)
 ```
 
 # Abstract
 
 In engineering projects analyzing economic decision-making problems is of the crucial components. Recently, several innovative alternative solutions have been developed for engineering projects in addition to traditional infrastructure. When there are many alternatives, the triple bottom line frame is commonly used to measure the sustainability of alternatives and select the best solution. The triple bottom line frame measures a project's or business's effectiveness in three areas. One of these areas is economic or profit analysis. For engineering projects, engineering economic analysis is performed to analyze the cost of alternatives. 
 
-An R package (engreco) was developed with several engineering economic analysis functions, also available via github. The main objective of the package is to add engineering economic analysis functions to the R-package development pool for convenient use for R users. Cash-flow diagrams are also included in the description document to show how each function calculates the time value of money. The package contains 11 functions with commonly used economic analysis equations; this package's possible use includes analyzing fixed and incremental costs, comparing alternatives, and cost estimation. The package is not only for engineering projects; anyone can use these basic functions to perform any economic analysis, including personal financing, such as investment and retirement plans. 
+An R package (engrecon) was developed with several engineering economic analysis functions, also available via github. The main objective of the package is to add engineering economic analysis functions to the R-package development pool for convenient use for R users. Cash-flow diagrams are also included in the description document to show how each function calculates the time value of money. The package contains 11 functions with commonly used economic analysis equations; this package's possible use includes analyzing fixed and incremental costs, comparing alternatives, and cost estimation. The package is not only for engineering projects; anyone can use these basic functions to perform any economic analysis, including personal financing, such as investment and retirement plans. 
 
 
 
@@ -157,11 +157,11 @@ future_to_annual(0.005,12,1000)
 $A = P \frac{i(1+i)^n}{(1+i)^n-1}$
 
 *Example*: An energy-efficient machine costs $5000 and has a life of 5 years. If the
-interest rate is 8%, how much must be saved every year to recover the cost of
+interest rate is 5%, how much must be saved every year to recover the cost of
 the capital invested in it? (Newnan (2020), Example 4.1)
 ```{r echo=TRUE}
 # present_to_annual (i, n, p)
-present_to_annual(0.08,5,5000)
+present_to_annual(0.05,5,5000)
 ```
 
 ## Uniform Gradient Payment
@@ -250,8 +250,8 @@ Where $i_{m}$ is monthly discount rate, $y$ is construction duration, and $C_{co
 _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and the duration of construction is 24 months. What is the interest during construction for this project?
 
 ```{r echo=TRUE}
-#interest_during_construction(i, duration, capital)
-#interest_during_construction(0.0275, 24,800000)
+#interest_during_construction (i, duration, capital)
+interest_during_construction(0.0275, 24,800000)
 ```
 
 # Applications
@@ -325,12 +325,23 @@ annual_to_present(0.04,20,500)
 
 # Summary
 
-Engineering economics is an essential aspect of engineering projects. The subject's typical applications include but are not limited to analyzing a possible investment, comparing alternatives, and determining bases for decision-making. Several options and equations exist to perform engineering economic analyses based on a project's scope and objective. The "engreco" R package was developed to provide these functions in one place on R studio. The package contains several functions required to perform engineering economic analyses. This package is a great addition to the R package pool that helps users to perform such analyses conveniently. 
+Engineering economics is an essential aspect of engineering projects. The subject's typical applications include but are not limited to analyzing a possible investment, comparing alternatives, and determining bases for decision-making. Several options and equations exist to perform engineering economic analyses based on a project's scope and objective. The "engrecon" R package was developed to provide these functions in one place on R studio. The package contains several functions required to perform engineering economic analyses. This package is a great addition to the R package pool that helps users to perform such analyses conveniently. 
 
 
 # Acknowledgements {-}
 
 Model development was funded by the U.S. Army Corps of Engineers' Engineering with Nature program ([EWN](https://ewn.erdc.dren.mil/)). Specifically, this project was developed under the Network for Engineering with Nature ([NEWN](https://n-ewn.org/)). The authors are grateful to the EWN and NEWN teams for their generous contributions to the scope of this effort. The authors are also grateful for USACE Economics reviewers. Opinions expressed here are those of the authors and not necessarily those of the agencies they represent.
+
+# Appendixes
+## Appendix A -  Model Test Plan
+A model test plan was developed for the package (Table 1). Tests were executed for all functions based on the test plan. The test was conducted by checking the examples provided in the description file. All values were verified against a textbook, manual calculation, and similar tools. The outcomes for all functions showed no know errors.  
+
+
+```{r echo=TRUE}
+# Table
+inserttable::insert_table (nrows = 10, ncols = 4, tbl_format "DT")
+```
+
 
 
 # References {-}
