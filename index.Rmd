@@ -1,7 +1,7 @@
 --- 
 title: "EngrEcon R-package"
 author: "Liya Abera and S. Kyle McKay"
-date: "April 2023"
+date: "March 2024"
 output:
   html_document: default
   word_document: default
@@ -55,7 +55,7 @@ In engineering projects analyzing economic decision-making problems is of the cr
 
 An R package (engrecon) was developed with several engineering economic analysis functions, also available via github. The main objective of the package is to add engineering economic analysis functions to the R-package development pool for convenient use for R users. Cash-flow diagrams are also included in the description document to show how each function calculates the time value of money. The package contains 11 functions with commonly used economic analysis equations; this package's possible use includes analyzing fixed and incremental costs, comparing alternatives, and cost estimation. The package is not only for engineering projects; anyone can use these basic functions to perform any economic analysis, including personal financing, such as investment and retirement plans. 
 
-
+Furthermore, the package is accompanied by a web application that will perform similar calculations. The app is a convenient option for users without prior experience with the R software. Like the package, the web app converts costs to the equivalent annual, future, or present costs.
 
 # Introduction
 
@@ -250,7 +250,7 @@ Where $i_{m}$ is monthly discount rate, $y$ is construction duration, and $C_{co
 _Example_: A project's first cost is $ 800,000, the interest rate is 2.75%, and the duration of construction is 24 months. What is the interest during construction for this project?
 
 ```{r echo=TRUE}
-#interest_during_construction (i, duration, capital)
+# interest_during_construction (i, duration, capital)
 interest_during_construction(0.0275, 24,800000)
 ```
 
@@ -339,9 +339,37 @@ A model test plan was developed for the package (Table 1). Tests were executed f
 
 ```{r echo=TRUE}
 # Table
-inserttable::insert_table (nrows = 10, ncols = 4, tbl_format "DT")
+insert_table (nrows = 53, ncols = 5)
 ```
 
+```{r echo=False, message=FALSE, warning=FALSE}
+my_tbl <- tibble::tribble(
+     ~Function, ~Test, ~Expected_value,  ~Test_method, ~outcome
+      NA,     NA,     NA,    NA,   NA,
+      NA,     NA,     NA,    NA,   NA,
+      NA,     NA,     NA,    NA,   NA,
+      NA,     NA,     NA,    NA,   NA,
+      NA,     NA,     NA,    NA,   NA,
+      NA,     NA,     NA,    NA,   NA,
+      NA,     NA,     NA,    NA,   NA,
+      NA,     NA,     NA,    NA,   NA
+  )
+
+require(knitr)
+kable(my_tbl, digits = 3, row.names = FALSE, align = "c",
+              caption = NULL)
+
+
+```
+
+```{r echo=False, message=FALSE, warning=FALSE}
+
+
+```
+
+```{r, echo=FALSE, fig.cap="Figure 2. Model Test plan."}
+knitr::include_graphics("C:/Users/SHARIFUL ISLAM/Desktop/ModelTestPlan.png")
+```
 
 
 # References {-}
